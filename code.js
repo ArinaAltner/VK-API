@@ -1,7 +1,7 @@
 function myFunction(){
   var ss = SpreadsheetApp.getActiveSpreadsheet();
   var mainsheet = ss.getSheetByName("MAIN");
-  var token = YOUR_TOKEN
+  var token = YOUR_TOKEN // вставать ваш токен в кавычках
 
   var URL_STRING = "https://api.vk.com/method/photos.get?owner_id=-202699776&album_id=wall&rev=1&access_token=" + token + "&v=5.131";
   var response = UrlFetchApp.fetch(URL_STRING);
@@ -17,7 +17,7 @@ function myFunction(){
     var date = new Date(data.response.items[i].date * 1000);
     var pictureURL = null
     for (var j = 0; j < data.response.items[i].sizes.length; j++){
-      if (data.response.items[i].sizes[j].type == "p"){
+      if (data.response.items[i].sizes[j].type === "p"){
         pictureURL = data.response.items[i].sizes[j].url
       }
     }
